@@ -1,6 +1,5 @@
 package com.example.employeesystemtestproject.ui.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -34,18 +33,20 @@ class LoginViewModel : BaseViewModel() {
                 call: Call<ResDetailEmployee>,
                 response: Response<ResDetailEmployee>
             ) {
-                if (response.isSuccessful) {
-                    val employee = response.body()
-                    _successfullyService.value = (employee?.data != null)
-                    _detailEmployee.value = employee!!
-                } else _successfullyService.value = false
+                response.validateResponse()
             }
 
             override fun onFailure(call: Call<ResDetailEmployee>, t: Throwable) {
                 _onFailure.value = t.localizedMessage
-                Log.wtf(javaClass.simpleName, " onFailure ${t.localizedMessage}")
             }
         })
     }
 
+    private fun Response<ResDetailEmployee>.validateResponse() {
+        if (isSuccessful) {
+            val employee = body()
+            _successfullyService.value = (employee?.data != null)
+            _detailEmployee.value = employee!!
+        } else _successfullyService.value = false
+    }
 }

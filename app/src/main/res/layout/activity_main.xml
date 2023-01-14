@@ -27,6 +27,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.Toolbar
+                    android:backgroundTint="?attr/colorPrimary"
                     android:id="@+id/tbContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

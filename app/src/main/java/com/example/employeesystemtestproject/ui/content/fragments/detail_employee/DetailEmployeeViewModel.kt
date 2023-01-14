@@ -33,16 +33,22 @@ class DetailEmployeeViewModel : BaseViewModel() {
                 call: Call<ResDetailEmployee>,
                 response: Response<ResDetailEmployee>
             ) {
-                 if (response.isSuccessful) {
-                    val employee = response.body()
-                    _successfullyService.value = (employee?.data != null)
-                    _detailEmployee.value = employee?.data
-                } else _successfullyService.value = false
+                response.validateResponse()
             }
 
             override fun onFailure(call: Call<ResDetailEmployee>, t: Throwable) {
                 _onFailure.value = t.localizedMessage
             }
         })
+    }
+
+    private fun Response<ResDetailEmployee>.validateResponse() {
+        if (isSuccessful) {
+            val employee = body()
+            _successfullyService.value = if (employee?.data != null) {
+                _detailEmployee.value = employee.data
+                true
+            } else false
+        } else _successfullyService.value = false
     }
 }

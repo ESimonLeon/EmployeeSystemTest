@@ -30,12 +30,7 @@ class ListEmployeesViewModel : BaseViewModel() {
                 call: Call<ResListEmployees>,
                 response: Response<ResListEmployees>
             ) {
-                val listResponse = arrayListOf<DataEmployee>()
-                if (response.isSuccessful) {
-                    val responseList = response.body()!!
-                    listResponse.addAll(responseList.data)
-                }
-                _listEmployees.value = listResponse
+                response.validateResponse()
             }
 
             override fun onFailure(call: Call<ResListEmployees>, t: Throwable) {
@@ -44,4 +39,12 @@ class ListEmployeesViewModel : BaseViewModel() {
         })
     }
 
+    private fun Response<ResListEmployees>.validateResponse() {
+        val listResponse = arrayListOf<DataEmployee>()
+        if (isSuccessful && body() != null) {
+            val responseList: ResListEmployees = body()!!
+            listResponse.addAll(responseList.data)
+        }
+        _listEmployees.value = listResponse
+    }
 }

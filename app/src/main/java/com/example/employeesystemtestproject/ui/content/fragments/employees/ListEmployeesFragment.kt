@@ -51,9 +51,7 @@ class ListEmployeesFragment : BaseFragment(), ListEmployeesAdapter.OnClickEmploy
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
-    private fun loadListEmployees() {
-        viewModel.listEmployees()
-    }
+    private fun loadListEmployees() = viewModel.listEmployees()
 
     private fun setComponentsListener() = with(binding) {
         srlList.setOnRefreshListener { loadListEmployees() }
@@ -64,30 +62,13 @@ class ListEmployeesFragment : BaseFragment(), ListEmployeesAdapter.OnClickEmploy
         onFailure.observe(requireActivity()) { loadFailureService(it) }
     }
 
-    private fun createRecyclerView(it: ArrayList<DataEmployee>?) = with(it) {
-        this ?: return@with
-        binding.rvEmployees.adapter = ListEmployeesAdapter(this, this@ListEmployeesFragment)
-
-        if (size > 0) loadNotEmptyList()
-        else loadEmptyList()
-    }
-
-    private fun loadEmptyList() = with(binding) {
-        tvEmpty.visibility = VISIBLE
-        pbLoad.visibility = GONE
-        binding.srlList.isRefreshing = false
-    }
-
-    private fun loadNotEmptyList() = with(binding) {
-        tvEmpty.visibility = GONE
-        pbLoad.visibility = GONE
-        binding.srlList.isRefreshing = false
-    }
-
     override fun setDataEmployee(employee: DataEmployee) {
+        navigateDetailFragment(employee)
+    }
+
+    private fun navigateDetailFragment(employee: DataEmployee) =
         ListEmployeesFragmentDirections.actionListEmployeesFragmentToDetailEmployeeFragment(employee.id)
             .apply {
                 findNavController().navigate(this)
             }
-    }
 }
