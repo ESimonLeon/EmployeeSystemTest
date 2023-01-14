@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.employeesystemtestproject.base.BaseFragment
@@ -19,6 +20,12 @@ class ListEmployeesFragment : BaseFragment(), ListEmployeesAdapter.OnClickEmploy
 
     private val viewModel: ListEmployeesViewModel by viewModels()
 
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            requireActivity().finish()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,11 +38,17 @@ class ListEmployeesFragment : BaseFragment(), ListEmployeesAdapter.OnClickEmploy
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        createBackStack()
+
         setComponentsObserver()
 
         setComponentsListener()
 
         loadListEmployees()
+    }
+
+    private fun createBackStack() = with(requireActivity()) {
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     private fun loadListEmployees() {

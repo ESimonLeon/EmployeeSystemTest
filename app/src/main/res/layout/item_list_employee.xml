@@ -32,7 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{ @string/employee_id(employeeLayout.id) }"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/tvSalary"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,10 +40,11 @@
 
             <TextView
                 android:id="@+id/tvSalary"
+                salaryTextColor="@{ employeeLayout.employee_salary }"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{ @string/employee_salary(employeeLayout.employee_salary) }"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/colorPrimaryVariant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,17 +52,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{ employeeLayout.employee_name }"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/colorPrimaryVariant"
                 app:layout_constraintEnd_toStartOf="@+id/tvAge"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEmployeeId" />
 
             <TextView
                 android:id="@+id/tvAge"
+                ageTextColor="@{ employeeLayout.employee_age }"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{ @string/employee_age(employeeLayout.employee_age) }"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/colorPrimaryVariant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSalary" />
 

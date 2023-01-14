@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModelLayout"
+            type="com.example.employeesystemtestproject.ui.content.fragments.detail_employee.DetailEmployeeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvDetailId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{ @string/employee_id(viewModelLayout.detailEmployee.id) }"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDetailName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{ viewModelLayout.detailEmployee.employee_name }"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/tvDetailAge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailId" />
+
+        <TextView
+            android:id="@+id/tvDetailAge"
+            ageTextColor="@{ viewModelLayout.detailEmployee.employee_age }"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{ @string/employee_age(viewModelLayout.detailEmployee.employee_age) }"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailId" />
+
+        <TextView
+            android:id="@+id/tvDetailSalary"
+            salaryTextColor="@{ viewModelLayout.detailEmployee.employee_salary }"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{ @string/employee_salary(viewModelLayout.detailEmployee.employee_salary) }"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
