@@ -12,4 +12,5 @@
     <string name="settings">Settings</string>
     <string name="logout">Cerrar Sesión</string>
     <string name="user_id_empty_login">Inserte User ID</string>
+    <string name="list_empty">No hay datos</string>
 </resources>
