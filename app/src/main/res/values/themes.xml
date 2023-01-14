@@ -1,0 +1,30 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.EmployeeSystemTestProject" parent="Theme.MaterialComponents.Light.DarkActionBar">
+
+        <item name="colorOnBackground">@color/app_background</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@android:color/holo_red_light</item>
+        <item name="colorOnSecondary">@color/teal_200</item>
+
+        <item name="android:windowBackground">?attr/colorOnBackground</item>
+        -
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorOnBackground</item>
+        <!-- Customize your theme here. -->
+
+        <item name="android:navigationBarColor">?attr/colorOnBackground</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ThemeContent" parent="Theme.EmployeeSystemTestProject">
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+    </style>
+</resources>

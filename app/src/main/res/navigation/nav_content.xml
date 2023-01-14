@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_content.xml"
+    app:startDestination="@id/nav_fragmentListEmployees">
+
+    <fragment
+        android:id="@+id/nav_fragmentListEmployees"
+        android:name="com.example.employeesystemtestproject.ui.content.fragments.employees.ListEmployeesFragment"
+        android:label="List Employees">
+
+        <action
+            android:id="@+id/action_listEmployeesFragment_to_detailEmployeeFragment"
+            app:destination="@id/nav_fragmentDetailEmployee" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_fragmentDetailEmployee"
+        android:name="com.example.employeesystemtestproject.ui.content.fragments.detail_employee.DetailEmployeeFragment"
+        android:label="List Employees">
+
+        <argument
+            android:name="idUser"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+    </fragment>
+
+</navigation>
